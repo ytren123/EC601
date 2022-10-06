@@ -3,11 +3,19 @@
 <h2>Twitter Test API</h2>
 
 <p>
-  For twitter api, the code is attached and I searched for recent twitters containing "food". And the result is attached in the twitter_api_test_result.py.
+  For Twitter API, the code is in  and I searched for recent twitters containing "food". And the result is attached in the twitter_api_test_result.txt.
 </p>
 
 <h2>Google NLP API</h2>
 
 <p>
-  
+  For NLP API, 
+</p>
+
+<h2>
+  User Story
+</h2>
+
+<p>
+  I want to investigate people's sentiment about Boston's food last week.
 </p>
