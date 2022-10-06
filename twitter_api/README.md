@@ -13,7 +13,7 @@
 <h2>Google NLP API</h2>
 
 <p>
-  For NLP API, 
+  For NLP API, the code is in NLP_api_test.py and I create a sentence called "Nice weather!". And I use NLP for sentiment analysis and get a value about the sentence. The result is attached in NLP_api_test_result.txt.
 </p>
 
 <h2>
