@@ -1,0 +1,44 @@
+(tmp) ➜  tmp python NLP_api_test.py 
+Traceback (most recent call last):
+  File "/Users/ninitsuten/opt/anaconda3/envs/tmp/lib/python3.9/site-packages/google/api_core/grpc_helpers.py", line 72, in error_remapped_callable
+    return callable_(*args, **kwargs)
+  File "/Users/ninitsuten/opt/anaconda3/envs/tmp/lib/python3.9/site-packages/grpc/_channel.py", line 946, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+  File "/Users/ninitsuten/opt/anaconda3/envs/tmp/lib/python3.9/site-packages/grpc/_channel.py", line 849, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+        status = StatusCode.PERMISSION_DENIED
+        details = "Cloud Natural Language API has not been used in project 48571189464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/language.googleapis.com/overview?project=48571189464 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry."
+        debug_error_string = "UNKNOWN:Error received from peer ipv4:172.217.165.138:443 {grpc_message:"Cloud Natural Language API has not been used in project 48571189464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/language.googleapis.com/overview?project=48571189464 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.", grpc_status:7, created_time:"2022-10-06T15:12:33.119474-04:00"}"
+>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/ninitsuten/Desktop/bu/tmp/NLP_api_test.py", line 17, in <module>
+    sentiment = client.analyze_sentiment(
+  File "/Users/ninitsuten/opt/anaconda3/envs/tmp/lib/python3.9/site-packages/google/cloud/language_v1/services/language_service/client.py", line 507, in analyze_sentiment
+    response = rpc(
+  File "/Users/ninitsuten/opt/anaconda3/envs/tmp/lib/python3.9/site-packages/google/api_core/gapic_v1/method.py", line 154, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/Users/ninitsuten/opt/anaconda3/envs/tmp/lib/python3.9/site-packages/google/api_core/retry.py", line 283, in retry_wrapped_func
+    return retry_target(
+  File "/Users/ninitsuten/opt/anaconda3/envs/tmp/lib/python3.9/site-packages/google/api_core/retry.py", line 190, in retry_target
+    return target()
+  File "/Users/ninitsuten/opt/anaconda3/envs/tmp/lib/python3.9/site-packages/google/api_core/grpc_helpers.py", line 74, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.PermissionDenied: 403 Cloud Natural Language API has not been used in project 48571189464 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/language.googleapis.com/overview?project=48571189464 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry. [links {
+  description: "Google developers console API activation"
+  url: "https://console.developers.google.com/apis/api/language.googleapis.com/overview?project=48571189464"
+}
+, reason: "SERVICE_DISABLED"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "language.googleapis.com"
+}
+metadata {
+  key: "consumer"
+  value: "projects/48571189464"
+}
+]
