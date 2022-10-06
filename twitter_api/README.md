@@ -6,8 +6,9 @@
   For Twitter API, the code is in twitter_api_test.py and I searched for recent twitters containing "food". And the result is attached in the twitter_api_test_result.txt.
 </p>
 
+<h2>Botometer API</h2>
 <p>
-  
+  For botometer API, I test the connection and the result is in Botometer_result.jpg.
 </p>
 
 <h2>Google NLP API</h2>
