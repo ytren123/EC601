@@ -1,0 +1,81 @@
+200
+{
+    "data": [
+        {
+            "edit_history_tweet_ids": [
+                "1577599451580940288"
+            ],
+            "id": "1577599451580940288",
+            "text": "RT @sunToTsuki: \ud83c\udf1eCarbonara\ud83c\udf1e\n\n#pasta #italian #food #foodie https://t.co/3j1PsaqUqQ"
+        },
+        {
+            "edit_history_tweet_ids": [
+                "1577599445075623936"
+            ],
+            "id": "1577599445075623936",
+            "text": "Subscribe to our channels. Read Genesis 41 for Context on Project Joseph! \n\nGenesis 41:35-36\n\nLink to our online platforms: https://t.co/Gavkldj39v\n\n#Soldiersofchrist #SOC #Christ #Jesus #joseph #Project #stock #food #famine #endtimes #jews #prophets #nation #israel #12tribes https://t.co/Vq9RnEC4n2"
+        },
+        {
+            "edit_history_tweet_ids": [
+                "1577599427933519873"
+            ],
+            "id": "1577599427933519873",
+            "text": "RT @food__master_: Are you a Chicken fry lover \u203c\ufe0f\u2753\ud83c\udf57\ud83c\udf57\ud83c\udf57\n\n#food #foodie https://t.co/TiLJLDpseh"
+        },
+        {
+            "edit_history_tweet_ids": [
+                "1577599271943241729"
+            ],
+            "id": "1577599271943241729",
+            "text": "RT @EUBioeconomy: #DYK that the #bioeconomy provides practical solutions in terms of #food availability and safety, offering high #quality\u2026"
+        },
+        {
+            "edit_history_tweet_ids": [
+                "1577599253148475393"
+            ],
+            "id": "1577599253148475393",
+            "text": "RT @chefjamesoakley: Recipe!\nDelicious light and fluffy Toffee apple and pecan doughnuts \ud83e\udd24\nClick on the picture for the full recipe.\n#chef\u2026"
+        },
+        {
+            "edit_history_tweet_ids": [
+                "1577599224778174465"
+            ],
+            "id": "1577599224778174465",
+            "text": "Visit our website to see all of our dishes. We're sure you'll find something you fancy \ud83e\udd58\n\u2022\n\u2022\nhttps://t.co/pNlj6lX6kw\n0116 224 0225\n\u2022\n#indiancuisine #leicester #food #leicestercity #foodie #kebab #balti #leicestershire #delivery #takeaway https://t.co/VLjaykkxmu"
+        },
+        {
+            "edit_history_tweet_ids": [
+                "1577599219581747200"
+            ],
+            "id": "1577599219581747200",
+            "text": "Disney California Adventure Park and Disneyland (Day 3) (10/04/22) #Disneyland #Anaheim #tuesday #funday #October #California #vacation #relaxation  #restandrelaxation #food #funtimes #disneylandcalifornia #californiaadventure #halloweenmonth https://t.co/rsuhoT7hfP"
+        },
+        {
+            "edit_history_tweet_ids": [
+                "1577599147351212032"
+            ],
+            "id": "1577599147351212032",
+            "text": "im hungry #food #iwantfood #imseriouslysohungry"
+        },
+        {
+            "edit_history_tweet_ids": [
+                "1577599128405741568"
+            ],
+            "id": "1577599128405741568",
+            "text": "The food on set \ud83d\ude1a #london #breakfast #food #set #sa #film #tv #actor #full https://t.co/wad2nx1EkO"
+        },
+        {
+            "edit_history_tweet_ids": [
+                "1577599086701707264"
+            ],
+            "id": "1577599086701707264",
+            "text": "#Allrecipes is a community built by and for kitchen experts: The cooks who will dedicate two days to a perfect beef bourguignon, but love the simplicity of a slow-cooker rendition as well. #Food\nhttps://t.co/c50mGNq921\nLIKE \u25aa\ufe0f SHARE \u25aa\ufe0f COMMENT"
+        }
+    ],
+    "meta": {
+        "newest_id": "1577599451580940288",
+        "next_token": "b26v89c19zqg8o3fpzbmm8gw5yuk7v0wtuzcqmphm1zlp",
+        "oldest_id": "1577599086701707264",
+        "result_count": 10
+    }
+}
