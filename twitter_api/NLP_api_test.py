@@ -6,7 +6,7 @@
 import os
 from google.cloud import language_v1
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = './test-proj-364717-4b99109b6f3d.json'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = ' '
 client = language_v1.LanguageServiceClient()
 
 text = "Nice weather!"
