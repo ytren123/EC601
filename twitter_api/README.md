@@ -22,5 +22,5 @@
 </h2>
 
 <p>
-  I want to investigate people's sentiment about Boston's food last week.
+  I am a customer and want to buy a new mobile phone. And I want to investigate people's attitude toward Apple and Samsung to decide which one I want to buy.
 </p>
