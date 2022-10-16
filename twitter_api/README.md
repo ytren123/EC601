@@ -22,5 +22,8 @@
 </h2>
 
 <p>
-  I am a customer and want to buy a new mobile phone. And I want to investigate people's attitude toward Apple and Samsung to decide which one I want to buy.
+  I am a customer and want to buy a new mobile phone. And I want to investigate people's attitude toward Apple and Xiaomi to decide which one I want to buy. I choose ten recent review about iphone and Xiaomi and calculate their average. And the result is attached below:
 </p>
+
+<img width="431" alt="image" src="https://user-images.githubusercontent.com/113720449/196055022-15c10e1e-409b-4798-9db4-dc927d10a2d3.png">
+
