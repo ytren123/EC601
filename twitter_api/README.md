@@ -22,7 +22,7 @@
 </h2>
 
 <p>
-  I am a customer and want to buy a new mobile phone. And I want to investigate people's attitude toward Apple and Xiaomi to decide which one I want to buy. I choose ten recent review about iphone and Xiaomi. And the result is attached:
+  I am a customer and want to buy a new mobile phone. And I want to investigate people's attitude toward Apple and Xiaomi to decide which one I want to buy. I choose recent ten reviews about iphone and Xiaomi. And the result is attached:
 </p>
 
 <img width="1583" alt="image" src="https://user-images.githubusercontent.com/113720449/196055607-45ebeb12-ebc5-4c9c-98f3-c5ee0551b202.png">
