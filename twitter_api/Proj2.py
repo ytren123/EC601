@@ -4,7 +4,7 @@ import json
 import numpy as np
 from google.cloud import language_v1
 
-bearer_token = 'AAAAAAAAAAAAAAAAAAAAAPRuhwEAAAAASI5w1RizbvA82ggDca8DsiutTIY%3DGrAjBZFuovwbsztz4zu0zFg8Wcd8m5IjNiMmsvkVJCRMsEWldZ'
+bearer_token = ''
 
 search_url = "https://api.twitter.com/2/tweets/search/recent"
 
@@ -35,7 +35,7 @@ def main():
     applelist = []
     for datas in appledatas['data']:
         applelist.append(datas['text'])
-    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'tensile-proxy-364720-d84c850e2060.json'
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = ''
     client = language_v1.LanguageServiceClient()
     apple_sentiment = []
     for text in applelist:
