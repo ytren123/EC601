@@ -15,3 +15,5 @@ def get_all_tweets(screen_name):
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth)
+    alltweets= []
+    new_tweets = api.user_timeline(screen_name=screen_name, count=20, )
