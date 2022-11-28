@@ -103,16 +103,20 @@ class QpExpression:
 
     def value(self):
         s = self.constant
-        for v, x in self.items():
-            if v.varValue is None:
+        for v, c in self.items():
+            if v.value is None:
                 return None
-            s += v.varValue * x
+            s += v.value * c
         return s
     
     def copy(self):
         """Make a copy of self except the name which is reset"""
         # Will not copy the name
         return QpExpression(self)
+    
+    def emptyCopy(self):
+        """Make an empty QpExpression"""
+        return QpExpression()
     
     def addterm(self, key, value):
         y = self.get(key, 0)
@@ -182,6 +186,89 @@ class QpExpression:
         else:
             self.constant += other
         return self
+
+    def subInPlace(self, other):
+        if isinstance(other, int) and (other == 0):
+            return self
+        if other is None:
+            return self
+        if isinstance(other, QpElement):
+            self.addterm(other, -1)
+        elif isinstance(other, QpExpression):
+            self.constant -= other.constant
+            for v, x in other.items():
+                self.addterm(v, -x)
+        elif isinstance(other, dict):
+            for e in other.values():
+                self.subInPlace(e)
+        else:
+            self.constant -= other
+        return self
+
+    def __neg__(self):
+        e = self.emptyCopy()
+        e.constant = -self.constant
+        for v, x in self.items():
+            e[v] = -x
+        return e
+
+    def __pos__(self):
+        return self
+
+    def __add__(self, other):
+        return self.copy().addInPlace(other)
+
+    def __sub__(self, other):
+        return self.copy().subInPlace(other)
+
+    def __mul__(self, other):
+        e = self.emptyCopy()
+        if isinstance(other, QpExpression):
+            e.constant = self.constant * other.constant
+            if len(other):
+                if len(self):
+                    raise TypeError("Non-constant expressions cannot be multiplied")
+                else:
+                    c = self.constant
+                    if c != 0:
+                        for v, x in other.items():
+                            e[v] = c * x
+            else:
+                c = other.constant
+                if c != 0:
+                    for v, x in self.items():
+                        e[v] = c * x
+        elif isinstance(other, QpVariable):
+            return self * QpExpression(other)
+        else:
+            if other != 0:
+                e.constant = self.constant * other
+                for v, x in self.items():
+                    e[v] = other * x
+        return 
+
+    def __div__(self, other):
+        if isinstance(other, QpExpression) or isinstance(other, QpVariable):
+            if len(other):
+                raise TypeError(
+                    "Expressions cannot be divided by a non-constant expression"
+                )
+            other = other.constant
+        e = self.emptyCopy()
+        e.constant = self.constant / other
+        for v, x in self.items():
+            e[v] = x / other
+        return 
+
+    def toDict(self):
+        """
+        exports the :py:class:`LpAffineExpression` into a list of dictionaries with the coefficients
+        it does not export the constant
+        :return: list of dictionaries with the coefficients
+        :rtype: list
+        """
+        return [dict(name=k.name, value=v) for k, v in self.items()]
+
 
 def main():
     a = QpElement('a', 2)
