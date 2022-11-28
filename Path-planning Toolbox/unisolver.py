@@ -74,9 +74,114 @@ class QpVariable(QpElement):
             upbound=self.upbound,
             value = self.value,
         )
+
+    def getLb(self):
+        return self.lowbound
+
+    def getUb(self):
+        return self.upbound
+
+    def bounds(self, low, up):
+        self.lowbound = low
+        self.upbound = up
     
+class QpExpression:
+    def __init__(self, e=None, constant=0, name=None):
+        self.name = name
+        if e is None:
+            e = {}
+        if isinstance(e, QpExpression):
+            # Will not copy the name
+            self.constant = e.constant
+            super().__init__(list(e.items()))
+        elif isinstance(e, dict):
+            self.constant = constant
+            super().__init__(list(e.items()))
+        elif isinstance(e, QpElement):
+            self.constant = 0
+            super().__init__([(e, 1)])
 
+    def value(self):
+        s = self.constant
+        for v, x in self.items():
+            if v.varValue is None:
+                return None
+            s += v.varValue * x
+        return s
+    
+    def copy(self):
+        """Make a copy of self except the name which is reset"""
+        # Will not copy the name
+        return QpExpression(self)
+    
+    def addterm(self, key, value):
+        y = self.get(key, 0)
+        if y:
+            y += value
+            self[key] = y
+        else:
+            self[key] = value
 
+    def __str__(self, constant=1):
+        s = ""
+        for v in self.sorted_keys():
+            val = self[v]
+            if val < 0:
+                if s != "":
+                    s += " - "
+                else:
+                    s += "-"
+                val = -val
+            elif s != "":
+                s += " + "
+            if val == 1:
+                s += str(v)
+            else:
+                s += str(val) + "*" + str(v)
+        if constant:
+            if s == "":
+                s = str(self.constant)
+            else:
+                if self.constant < 0:
+                    s += " - " + str(-self.constant)
+                elif self.constant > 0:
+                    s += " + " + str(self.constant)
+        elif s == "":
+            s = "0"
+        return s
+
+    def sorted_keys(self):
+        """
+        returns the list of keys sorted by name
+        """
+        result = [(v.name, v) for v in self.keys()]
+        result.sort()
+        result = [v for _, v in result]
+        return result
+
+    def __repr__(self):
+        l = [str(self[v]) + "*" + str(v) for v in self.sorted_keys()]
+        l.append(str(self.constant))
+        s = " + ".join(l)
+        return s
+
+    def addInPlace(self, other):
+        if isinstance(other, int) and (other == 0):
+            return self
+        if other is None:
+            return self
+        if isinstance(other, QpElement):
+            self.addterm(other, 1)
+        elif isinstance(other, QpExpression):
+            self.constant += other.constant
+            for v, x in other.items():
+                self.addterm(v, x)
+        elif isinstance(other, dict):
+            for e in other.values():
+                self.addInPlace(e)
+        else:
+            self.constant += other
+        return self
 
 def main():
     a = QpElement('a', 2)
