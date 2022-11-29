@@ -289,8 +289,14 @@ class QpExpression(dict):
     to_dict = toDict
 
 class QpConstraint(QpExpression):
-    
-
+    def __init__(self, name=None, e=None, s=0, rhs=None):
+        QpExpression.__init__(self, e, name=name)
+        if rhs is not None:
+            self.constant -= rhs
+        self.s = s
+        self.pi = None
+        self.slack = None
+        self.modified = True
 
 def main():
     # x_name = ['x_0', 'x_1', 'x_2']
