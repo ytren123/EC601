@@ -20,13 +20,19 @@ import constants as const
 import math
 import re
 import warnings
+from collections import Counter
+from collections.abc import Iterable
 
 class QpElement:
     def __init__(self, name, value = 0):
         self.name = name
         self.value = value
         self.modified = True
+        self.hash = id(self)
 
+    def __hash__(self):
+        return self.hash
+    
     def __str__(self):
         return self.name
     
@@ -46,6 +52,13 @@ class QpElement:
 
     def __mul__(self, ele):
         return QpExpression(self) * ele
+
+    def __pow__(self, ele):
+        if isinstance(ele, int):
+            n = self.name + '**' + str(ele)
+            return QpElement(name = n, value = self.value ** ele)
+        else:
+            raise TypeError("Non-constant expressions cannot be exponentier")
 
     def __div__(self, ele):
         return QpExpression(self) / ele
@@ -85,7 +98,7 @@ class QpVariable(QpElement):
         self.lowbound = low
         self.upbound = up
     
-class QpExpression:
+class QpExpression(dict):
     def __init__(self, e=None, constant=0, name=None):
         self.name = name
         if e is None:
@@ -97,6 +110,9 @@ class QpExpression:
         elif isinstance(e, dict):
             self.constant = constant
             super().__init__(list(e.items()))
+        elif isinstance(e, Iterable):
+            self.constant = constant
+            super().__init__(e)
         elif isinstance(e, QpElement):
             self.constant = 0
             super().__init__([(e, 1)])
@@ -161,6 +177,7 @@ class QpExpression:
         result = [(v.name, v) for v in self.keys()]
         result.sort()
         result = [v for _, v in result]
+        print(result)
         return result
 
     def __repr__(self):
@@ -245,7 +262,7 @@ class QpExpression:
                 e.constant = self.constant * other
                 for v, x in self.items():
                     e[v] = other * x
-        return 
+        return e   
 
     def __div__(self, other):
         if isinstance(other, QpExpression) or isinstance(other, QpVariable):
@@ -258,7 +275,7 @@ class QpExpression:
         e.constant = self.constant / other
         for v, x in self.items():
             e[v] = x / other
-        return 
+        return e
 
     def toDict(self):
         """
@@ -269,13 +286,26 @@ class QpExpression:
         """
         return [dict(name=k.name, value=v) for k, v in self.items()]
 
+    to_dict = toDict
+
+class QpConstraint(QpExpression):
+    
+
 
 def main():
-    a = QpElement('a', 2)
-    b = QpElement('b', 3)
-    print(a+b)
-    c = QpVariable('a','b',value = 3)
-    print(c.ToDict())
+    # x_name = ['x_0', 'x_1', 'x_2']
+    x_name = ['x', 'y', 'x**2']
+    x = [QpVariable(x_name[i], lowbound = 0, upbound = 10) for i in range(3) ]
+    c = QpExpression([ (x[0],1), (x[1],-3), (x[2],4)])
+    d = 3
+    print(c)
+    print(c * d)
+
+    print('----')
+    e = QpElement('e', value = 3)
+    # print(e ** 2)
+    f = e ** 2
+    print (f.name)
 
 if __name__ == '__main__':
     start_time = time.time()
